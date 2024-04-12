@@ -52,20 +52,20 @@ interface Product {
 }
 
 const product: Product = {
-  name: "Pokemon Collection",
+  name: "Ringo Collection",
   price: "$10",
   rating: 5,
   images: [
     {
       id: 1,
       name: "Ringo NFT",
-      src: "https://wallpapers-clan.com/wp-content/uploads/2023/11/cute-pokemon-pikachu-rain-desktop-wallpaper-preview.jpg",
+      src: "https://scontent.fsin14-2.fna.fbcdn.net/v/t39.30808-6/327161498_1281712586109510_9027727457607388738_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=RVOcVqq6fUAAb55Sle1&_nc_ht=scontent.fsin14-2.fna&oh=00_AfA5pcPhDgBugBH276DGnLLFKvskO22ATw4A-1Bj8o8olw&oe=661E9A82",
       alt: "Uncle Ringo NFT Collection",
     },
   ],
 
   description: `
-    <p>Example pokemon collection for testing purposes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur auctor dolor vel semper. Donec eleifend diam eget enim lobortis, non auctor dolor tincidunt. Nam euismod, dui a ultrices ullamcorper, sem nisl tincidunt turpis, placerat consequat libero metus ac quam. Mauris vitae sem faucibus, consequat lorem eget, faucibus purus.</p>
+    <p>Example ringo collection for testing purposes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur auctor dolor vel semper. Donec eleifend diam eget enim lobortis, non auctor dolor tincidunt. Nam euismod, dui a ultrices ullamcorper, sem nisl tincidunt turpis, placerat consequat libero metus ac quam. Mauris vitae sem faucibus, consequat lorem eget, faucibus purus.</p>
   `,
 };
 
@@ -78,10 +78,10 @@ export default function NFTminting({ secretKey }: MintPageProps) {
   // Change this to yours
   const collectionMintAddress =
     process.env.CollectionMintAddress ||
-    "9yjYUJ2rfXcuPadG51vDF5Zvnqzg8g87PCxFG7WK66QC";
+    "4K8dzVJnDxYvfhMrt9C71qiQb1jgPFNEm9Ty7YjDe2pJ";
   const candyMachineAddress =
     process.env.CandyMachineAddress ||
-    "HDS6FLM572tzCbgPtf7mgcSwRiH2uDB3yHphGoFDn4Za";
+    "H5ndfTAYgN5t12owKAsZDgh22oeASN2BUoUyijEQEs2v";
 
   const [isOpen, setIsOpen] = useState(false);
   const [assetData, setAssetData] = useState<DigitalAsset | null>(null);
