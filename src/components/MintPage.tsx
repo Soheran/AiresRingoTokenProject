@@ -93,10 +93,10 @@ const WalletConnect: React.FC<MintPageProps> = ({ secretKey }) => {
                 >
                   <div className="flex lg:flex-1">
                     <a href="#" className="-m-1.5 p-1.5">
-                      <span className="sr-only">Aires A.T.</span>
+                      <span className="sr-only">Uncle Ringo</span>
                       <img
                         className="h-8 w-auto"
-                        src="https://images.squarespace-cdn.com/content/v1/613aa4d54eebce178a4c3431/df1cbc1a-e5d0-4366-ab81-046c0c4a9eec/A_A.T_Main_Logo_2000x1500_2-removebg-preview.png"
+                        src="https://scontent.fsin14-2.fna.fbcdn.net/v/t39.30808-6/327161498_1281712586109510_9027727457607388738_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=RVOcVqq6fUAAb55Sle1&_nc_ht=scontent.fsin14-2.fna&oh=00_AfA5pcPhDgBugBH276DGnLLFKvskO22ATw4A-1Bj8o8olw&oe=661E9A82"
                         alt=""
                       />
                     </a>

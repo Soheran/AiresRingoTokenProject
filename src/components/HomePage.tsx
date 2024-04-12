@@ -3,14 +3,13 @@ export default function HomePage() {
     <>
       <div className="p-56 flex justify-center items-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4 text-red-500">
-            Aires Applied Technology
-          </h1>
+          <h1 className="text-4xl font-bold mb-4 text-red-500">Uncle Ringo</h1>
           <p className="text-lg">
-            Aires Applied Tech Is A Tech Startup Launched In Singapore (2021) We
-            Are Incubated At Ice 71 / Blk 71 Accelerator Program By The National
-            University Of Singapore Cybersecurity Artificial Intelligence And
-            Related Applications Other Areas Of Technology
+            The Leading Carnival Organiser in Singapore Since 1984, Uncle Ringo
+            had organised more than 100 carnivals around Singapore. As
+            Singapore`s top carnival organising company, we provide the most
+            nostalgic experiences through engaging everyone with our exciting
+            carnival rides and games.
           </p>
         </div>
       </div>
