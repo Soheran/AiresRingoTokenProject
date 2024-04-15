@@ -59,7 +59,7 @@ const product: Product = {
     {
       id: 1,
       name: "Ringo NFT",
-      src: "https://scontent.fsin14-2.fna.fbcdn.net/v/t39.30808-6/327161498_1281712586109510_9027727457607388738_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=RVOcVqq6fUAAb55Sle1&_nc_ht=scontent.fsin14-2.fna&oh=00_AfA5pcPhDgBugBH276DGnLLFKvskO22ATw4A-1Bj8o8olw&oe=661E9A82",
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmgH9klJIpc3Z4BWkVAoPiXO2ipKidj-cgmCnUkWVPxw&s",
       alt: "Uncle Ringo NFT Collection",
     },
   ],
