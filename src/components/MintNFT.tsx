@@ -78,10 +78,10 @@ export default function NFTminting({ secretKey }: MintPageProps) {
   // Change this to yours
   const collectionMintAddress =
     process.env.CollectionMintAddress ||
-    "F1stB5XQp8j5trsbmq1e6ykAHJGYYscogbcNHmvt475";
+    "A7bMvWt2orKaFiABfg1XKTqvWVuaAcpbp1D8343NZ2D2";
   const candyMachineAddress =
     process.env.CandyMachineAddress ||
-    "2Wty3sMhShMSafbtnAyw2eG25GzSoQMknGTrPTfUGy8G";
+    "C28iSsAdbZFWHjW8BK4tf3YnVmftoDDAHECwp7eQFA2u";
 
   const [isOpen, setIsOpen] = useState(false);
   const [assetData, setAssetData] = useState<DigitalAsset | null>(null);
@@ -326,6 +326,14 @@ export default function NFTminting({ secretKey }: MintPageProps) {
                                 {assetData && (
                                   <h3 className="data">
                                     NFT Name: {assetData.metadata.name}
+                                  </h3>
+                                )}
+                                {assetData && (
+                                  <h3 className="data">
+                                    NFT Symbol:{" "}
+                                    {assetData.metadata.symbol
+                                      ? assetData.metadata.symbol
+                                      : "Undefined"}
                                   </h3>
                                 )}
                                 <div style={{ textAlign: "center" }}>
