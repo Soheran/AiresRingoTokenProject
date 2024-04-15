@@ -78,10 +78,10 @@ export default function NFTminting({ secretKey }: MintPageProps) {
   // Change this to yours
   const collectionMintAddress =
     process.env.CollectionMintAddress ||
-    "8gct7dZFiM3ct3wsfBdHxiEp2kScj26hmAzKuRa8KCPq";
+    "F1stB5XQp8j5trsbmq1e6ykAHJGYYscogbcNHmvt475";
   const candyMachineAddress =
     process.env.CandyMachineAddress ||
-    "CcRk2YQVaKXrQ3vPYRFGKGWypjLndydeVQoendBrzCUc";
+    "2Wty3sMhShMSafbtnAyw2eG25GzSoQMknGTrPTfUGy8G";
 
   const [isOpen, setIsOpen] = useState(false);
   const [assetData, setAssetData] = useState<DigitalAsset | null>(null);
