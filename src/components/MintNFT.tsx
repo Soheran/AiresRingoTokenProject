@@ -59,7 +59,7 @@ const product: Product = {
     {
       id: 1,
       name: "Ringo NFT",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmgH9klJIpc3Z4BWkVAoPiXO2ipKidj-cgmCnUkWVPxw&s",
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_fgtZrTcMS2Icx_7mv-uDotsP_8qOL5WKQRjKsPLhMA&s",
       alt: "Uncle Ringo NFT Collection",
     },
   ],
@@ -115,53 +115,6 @@ export default function NFTminting({ secretKey }: MintPageProps) {
   const fromWallet = Keypair.fromSecretKey(SK);
   console.log(fromWallet.publicKey.toBase58());
 
-  // Create the Collection NFT.
-  async function createCollectionNft() {
-    const collectionMint = generateSigner(umi);
-    console.log("collectionMint: ", collectionMint);
-    await createNft(umi, {
-      mint: collectionMint,
-      authority: umi.identity,
-      name: "Testing Collection for nfts 2",
-      symbol: "RCO",
-      uri: "https://res.cloudinary.com/db9aqguwu/raw/upload/v1712034516/collection1_sxbryq.json",
-      sellerFeeBasisPoints: percentAmount(9.99, 2), // 9.99%
-      isCollection: true,
-    }).sendAndConfirm(umi);
-
-    // Create the Candy Machine.
-    const candyMachine = generateSigner(umi);
-    console.log("candyMachine: ", candyMachine);
-    const createCandyMachineTransaction = await create(umi, {
-      candyMachine,
-      collectionMint: collectionMint.publicKey,
-      collectionUpdateAuthority: umi.identity,
-      tokenStandard: TokenStandard.NonFungible,
-      sellerFeeBasisPoints: percentAmount(9.99, 2), // 9.99%
-      itemsAvailable: 3,
-      creators: [
-        {
-          address: umi.identity.publicKey,
-          verified: true,
-          percentageShare: 100,
-        },
-      ],
-      configLineSettings: some({
-        prefixName: "",
-        nameLength: 32,
-        prefixUri: "",
-        uriLength: 200,
-        isSequential: false,
-      }),
-      guards: {
-        mintLimit: some({ id: 1, limit: 1 }),
-      },
-    });
-
-    // Wait for the transaction to be confirmed
-    await createCandyMachineTransaction.sendAndConfirm(umi);
-  }
-
   async function getCM() {
     let candyMachineAddr = publicKey(candyMachineAddress);
     const candyMachine = await fetchCandyMachine(umi, candyMachineAddr);
@@ -171,52 +124,6 @@ export default function NFTminting({ secretKey }: MintPageProps) {
     console.log(candyGuard);
     // console.log(candyGuard.guards.mintLimit);
     // console.log(candyGuard.guards.solPayment);
-  }
-
-  async function insertItems() {
-    let candyMachineAddr = publicKey(candyMachineAddress);
-    const candyMachine = await fetchCandyMachine(umi, candyMachineAddr);
-
-    await addConfigLines(umi, {
-      candyMachine: candyMachine.publicKey,
-      index: 0,
-      configLines: [
-        {
-          name: "meme1",
-          uri: "https://raw.githubusercontent.com/Soheran/uploaded/main/meme1.json",
-        },
-        {
-          name: "meme2",
-          uri: "https://raw.githubusercontent.com/Soheran/uploaded/main/meme2.json",
-        },
-        {
-          name: "meme3",
-          uri: "https://raw.githubusercontent.com/Soheran/uploaded/main/meme3.json",
-        },
-      ],
-    }).sendAndConfirm(umi);
-  }
-
-  async function updateGuard() {
-    let candyMachineAddr = publicKey(candyMachineAddress);
-    const candyMachine = await fetchCandyMachine(umi, candyMachineAddr);
-    const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
-
-    await updateCandyGuard(umi, {
-      candyGuard: candyGuard.publicKey,
-      guards: {
-        ...candyGuard.guards,
-        botTax: some({ lamports: sol(0.01), lastInstruction: true }),
-        mintLimit: some({ id: 1, limit: 1 }),
-        solPayment: some({
-          lamports: sol(0.01),
-          destination: umi.identity.publicKey,
-        }),
-      },
-      groups: [],
-    }).sendAndConfirm(umi);
-
-    getCM();
   }
 
   async function mintNft() {
@@ -255,13 +162,6 @@ export default function NFTminting({ secretKey }: MintPageProps) {
 
       getAsset(nftMint.publicKey);
     }
-  }
-
-  async function deleteCM() {
-    let candyMachineAddr = publicKey(candyMachineAddress);
-    await deleteCandyMachine(umi, {
-      candyMachine: candyMachineAddr,
-    }).sendAndConfirm(umi);
   }
 
   async function getAsset(pk: string) {
@@ -392,21 +292,11 @@ export default function NFTminting({ secretKey }: MintPageProps) {
                 <Transition.Root show={isOpen} as={Fragment}>
                   <Dialog
                     as="div"
-                    className="fixed inset-0 overflow-y-auto"
+                    className="fixed inset-0 overflow-y-auto z-50"
                     onClose={() => setIsOpen(false)}
                   >
                     <div className="flex items-center justify-center min-h-screen">
-                      <Transition.Child
-                        as={Fragment}
-                        enter="ease-out duration-300"
-                        enterFrom="opacity-0"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-200"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                      >
-                        <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-                      </Transition.Child>
+                      <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity backdrop-blur-md" />
 
                       <Transition.Child
                         as={Fragment}
@@ -436,14 +326,6 @@ export default function NFTminting({ secretKey }: MintPageProps) {
                                 {assetData && (
                                   <h3 className="data">
                                     NFT Name: {assetData.metadata.name}
-                                  </h3>
-                                )}
-                                {assetData && (
-                                  <h3 className="data">
-                                    NFT Symbol:{" "}
-                                    {assetData.metadata.symbol
-                                      ? assetData.metadata.symbol
-                                      : "Undefined"}
                                   </h3>
                                 )}
                                 <div style={{ textAlign: "center" }}>
