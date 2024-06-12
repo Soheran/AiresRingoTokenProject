@@ -1,5 +1,2 @@
 1. To run the file use "npm run dev".
-
-2. Password for the site is "aires".
-
-3. Have to create your own cloudinary account.
+2. Have to create your own cloudinary account.
